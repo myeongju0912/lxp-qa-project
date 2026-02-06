@@ -1,5 +1,5 @@
-pytest
-selenium
-webdriver-manager
-requests
-pytest-html
+pytest #Python 테스트 실행 도구.
+selenium #웹 브라우저 자동화 도구.
+webdriver-manager #ChromeDriver 같은 브라우저 드라이버를 자동으로 다운로드/관리
+requests #HTTP 요청 보내는 라이브러리
+pytest-html #pytest 실행 결과를 HTML 리포트로 만들어 줌

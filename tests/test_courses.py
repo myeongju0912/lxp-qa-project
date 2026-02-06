@@ -1,9 +1,9 @@
 
-from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.common.by import By #웹 요소를 어떤 기준으로 찾을지
+import time #기다리기 
 from pages.login_page import LoginPage
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait #특정 조건이 만족될 때까지 기다림
+from selenium.webdriver.support import expected_conditions as EC #무엇을 기다릴지 조건 정의 예) 버튼 클릭 가능해 질 때까지 기달리기
 
 
 def test_login_and_open_classrooms(driver, base_url):
@@ -13,12 +13,13 @@ def test_login_and_open_classrooms(driver, base_url):
     driver.get(f"{base_url}/classrooms/")
     time.sleep(2)
     
+    #브라우저가 로그인 페이지에 있는가 확인
     if "accounts.elice.io" in driver.current_url or "login" in driver.current_url:
 
     #TC-CRS-002
         login = LoginPage(driver)
         login.fill_email("jellyfish09@naver.com")
-        login.fill_password("Ff0rever@!")
+        login.fill_password("DPFFLdpffl@!21")
         time.sleep(1)
         login.submit()
 
@@ -38,6 +39,7 @@ def test_login_and_open_classrooms(driver, base_url):
 
     print("classrooms 페이지 진입 성공", driver.current_url)
 
+    #로그인 후 페이지가 /my or /classrooms 확인
     assert "/my" in driver.current_url or "/classrooms" in driver.current_url
     
     #TC-CRS-003 
@@ -163,7 +165,7 @@ def test_login_and_open_classrooms(driver, base_url):
 
     # print("📌 현재 선택된 폴더 row 찾음")
 
-    #TC-CRS-007
+    #
     #강의자료 클릭
     lecture_material = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((
